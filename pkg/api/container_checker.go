@@ -8,12 +8,12 @@
 package api
 
 type ContainerChecker struct {
-	Name string
-	Image string
+	Name           string
+	Image          string
 	ExpectExitCode int
-	Env map[string]string
+	Env            map[string]string
 }
 
-func (c *ContainerChecker)Run()error  {
+func (c *ContainerChecker) Run() error {
 	return nil
 }
