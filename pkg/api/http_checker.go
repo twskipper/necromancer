@@ -24,26 +24,26 @@ type HTTPChecker struct {
 	Body             io.Reader
 }
 
-func (h *HTTPChecker) Run() (result *Result,err error) {
+func (h *HTTPChecker) Run() (result *Result, err error) {
 	now := time.Now()
 	result = &Result{
-		Name:     h.Name,
+		Name: h.Name,
 	}
 	client := &http.Client{
 		Timeout: h.Timeout,
 	}
-	req,err := http.NewRequest(h.Method,h.URL,h.Body)
+	req, err := http.NewRequest(h.Method, h.URL, h.Body)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
-	response,err := client.Do(req)
+	response, err := client.Do(req)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
 	if response.StatusCode != h.ExpectStatusCode {
-		return nil,fmt.Errorf("not expected status code")
+		return nil, fmt.Errorf("not expected status code")
 	}
 	result.Ok = true
 	result.Duration = time.Since(now)
-	return result,nil
+	return result, nil
 }
