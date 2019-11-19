@@ -23,9 +23,9 @@ func TestHTTPChecker_Run(t *testing.T) {
 		Timeout:          5 * time.Second,
 		Body:             nil,
 	}
-	res,err := hc.Run()
+	res, err := hc.Run()
 	if err != nil {
 		t.Error(err)
 	}
-	log.Println("res: ",res)
+	log.Println("res: ", res)
 }
